@@ -3,7 +3,7 @@
 /**
  *
  */
-class Prof_model extends CI_Model
+class Professor_Aluno_model extends CI_Model
 {
 
   public function busca_todas_disciplinas_curso($idCurso)
@@ -20,9 +20,11 @@ $disciplinas = $this->db->get()->result_array();
 
   public function busca_professores($disciplina)
     {
+
                     $this->db->select ("*");
-                    $this->db->from("Professor_Leciona_Diciplina");
+                    $this->db->from("Competencia");
                     $this->db->where("idDisciplina = ",$disciplina);
+                    $this->db->where("lecionando = ",1);
       $disciplina = $this->db->get()->result_array();
 
 
