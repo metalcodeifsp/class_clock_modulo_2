@@ -109,12 +109,9 @@ CREATE TABLE IF NOT EXISTS Competencia(
 );
 
 create TABLE if not EXISTS Relatorio(
-  id            INT             NOT NULL,
-  idCurso       INT             NOT NULL,
+  id            INT             NOT NULL      AUTO_INCREMENT,
   nome          VARCHAR(255)    NOT NULL,
   data          DATE            NOT NULL,
-  result        INT             NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_Relatorio_Curso
-    FOREIGN KEY (idCurso) REFERENCES Curso(id)
+  result        INT             NOT NULL
+
 );

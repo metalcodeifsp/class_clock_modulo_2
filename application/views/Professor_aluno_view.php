@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="<?= base_url('css/bootstrap.css')?>">
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
-    <?php $rel = ($alunos * $fenc)/$professores; ?>
+
     <div class="container">
 
 
@@ -17,7 +17,7 @@
         <td>fenc</td>
         <td>professores</td>
         <td>valor final</td>
-        <td>ano</td>
+        <td>data</td>
       </tr>
       <tr>
         <td><?=$nome_curso ?></td>
@@ -25,7 +25,7 @@
         <td><?=$fenc ?></td>
         <td><?=$professores;?></td>
         <td><?=$rel ?></td>
-        <td><?=$ano ?></td>
+        <td><?=$data ?></td>
       </tr>
     </table>
     </div>

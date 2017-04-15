@@ -50,6 +50,14 @@ $disciplinas = $this->db->get()->result_array();
       $this->db->where("id",$idCurso);
       return $this->db->get('curso')->result_array();
     }
+    public function busca_todos_curso()
+    {
+      return $this->db->get('curso')->result_array();
+    }
+    public function insert_relatorio($relatorio)
+    {
+      $this->db->insert('Relatorio',$relatorio);
 
+    }
 
   }
