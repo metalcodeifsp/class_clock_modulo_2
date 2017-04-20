@@ -59,5 +59,9 @@ $disciplinas = $this->db->get()->result_array();
       $this->db->insert('Relatorio',$relatorio);
 
     }
+    public function busca_todos_relatorios()
+    {
+      return $this->db->get('Relatorio')->result_array();
+    }
 
   }

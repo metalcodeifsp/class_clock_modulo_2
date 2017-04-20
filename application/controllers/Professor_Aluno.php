@@ -13,8 +13,9 @@ class Professor_Aluno extends CI_Controller
     $this->load->helper('url');
 
     $cursos = $this->Professor_Aluno_model->busca_todos_curso();
-    $dados = array('cursos' => $cursos );
-    $this->load->view("cadastrar_view.php", $dados);
+    $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
+    $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
+    $this->load->view("Professor_aluno_view.php", $dados);
   }
 
   public function cadastrar($idCurso)
@@ -24,7 +25,6 @@ class Professor_Aluno extends CI_Controller
     $this->load->helper('url');
 
     $curso = $this->Professor_Aluno_model->busca_curso($idCurso);
-
 
     $disciplinas  = $this->Professor_Aluno_model->busca_todas_disciplinas_curso($idCurso);
     $n_prof_total = 0;
@@ -42,7 +42,11 @@ class Professor_Aluno extends CI_Controller
     }else {
       $fenc = 20/18;
     }
-    $alunos       = 150;//temporario
+
+    $alunos       = $this->input->post('n_alunos');
+    print_r($alunos);
+    print_r($this->input->post('n_alunos'));
+    print_r(3);
     $data          = date("Y/m/d");
     $rel = ($alunos * $fenc)/$n_prof_total;
 
@@ -50,7 +54,10 @@ class Professor_Aluno extends CI_Controller
 
     $this->Professor_Aluno_model->insert_relatorio($relatorio);
 
-    $dados = array('nome_curso'=>$nome_curso,'alunos' => $alunos, 'professores' => $n_prof_total, 'fenc' => $fenc, 'data'=>$data, 'rel' => $rel );
+
+    $cursos = $this->Professor_Aluno_model->busca_todos_curso();
+    $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
+    $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
 
     $this->load->view("Professor_aluno_view.php", $dados);
   }

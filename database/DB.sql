@@ -112,6 +112,6 @@ create TABLE if not EXISTS Relatorio(
   id            INT             NOT NULL      AUTO_INCREMENT,
   nome          VARCHAR(255)    NOT NULL,
   data          DATE            NOT NULL,
-  result        INT             NOT NULL
-
+  result        INT             NOT NULL,
+  PRIMARY KEY(id)
 );
