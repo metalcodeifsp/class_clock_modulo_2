@@ -6,33 +6,56 @@
     <title></title>
   </head>
   <body>
-
+      <div class="container">
+<h1>Cadastro</h1>
     <?php
      $nomes = array();
     foreach ($cursos as $curso) {
       array_push($nomes, $curso['nome']);
     }
     ?>
-    <select>
-    <option value="">selecionar curso</option>
+
+      <br>
+      <form action="#" method="post">
+<select name="Color">
+  <option value="">selecionar curso</option>
+  <?php
+  foreach($nomes as $nome => $value):
+  echo '<option value="'.$nome.'">'.$value.'</option>';
+  endforeach;
+  ?>
+</select>
+<input type="submit" name="submit" value="Get Selected Values" />
+</form>
+<?php
+if(isset($_POST['submit'])){
+$selected_val = $_POST['Color'];  // Storing Selected Value In Variable
+print_r($selected_val);
+echo "You have selected :", $selected_val;  // Displaying Selected Value
+} ?>
     <?php
-    foreach($nomes as $nome => $value):
-    echo '<option value="'.$nome.'">'.$value.'</option>';
-    endforeach;
-    ?>
-    </select>
-    <form action="">
-      <input type="int" name="n_alunos">
-      <button type="submit" name="button"></button>
-    </form>
 
-    <?php
-    $rel = $cursos[0]['id'];
-    echo anchor('Professor_Aluno/cadastrar/'.$rel,'cadastrar');
-     ?>
+    echo form_open("Professor_Aluno/cadastrar");
 
+    echo form_hidden("numero_curso",1);
 
-    <div class="container">
+    echo form_label("Numero de Alunos", "aluno");
+    echo form_input(array(
+      "name" => "aluno",
+    ));
+
+    echo form_button(array(
+      "class" => "btn btn-primary",
+      "content" => "Cadastrar",
+      "type" => "submit"
+    ));
+
+    echo form_close();
+
+      ?>
+
+    <h1>Lista</h1>
+
 
     <table class="table">
 
