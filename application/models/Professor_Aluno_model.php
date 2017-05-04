@@ -50,6 +50,11 @@ $disciplinas = $this->db->get()->result_array();
       $this->db->where("id",$idCurso);
       return $this->db->get('curso')->result_array();
     }
+    public function busca_curso_nome($NomeCurso)
+    {
+      $this->db->where("nome",$NomeCurso);
+      return $this->db->get('curso')->result_array();
+    }
     public function busca_todos_curso()
     {
       return $this->db->get('curso')->result_array();
