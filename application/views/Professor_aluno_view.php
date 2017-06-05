@@ -12,57 +12,56 @@
       <?php
        $nomes = array();
 
+
       foreach ($cursos as $curso) {
         array_push($nomes, $curso['nome']);
       }
 
       ?>
 
+
+      <table class="table">
+        <tr>
+          <td><?php echo form_open("Professor_Aluno/GerarRelatorio");
+          echo form_button(array(
+            "class" => "btn btn-primary",
+            "content" => "Ver Relatórios",
+            "type" => "submit"
+          ));
+          echo form_close(); ?></td>
+  <?php   echo form_open("Professor_Aluno/cadastrar"); ?>
+          <td><?php echo form_button(array(
+            "class" => "btn btn-primary",
+            "content" => "Incluir Relatórios",
+            "type" => "submit"
+          )); ?></td>
+        </tr>
+        <tr>
+          <td><b>Nome do Curso</b></td>
+          <td><b>Numero de Alunos</b></td>
+        </tr>
       <?php
 
-      echo form_open("Professor_Aluno/cadastrar");
-
-      echo form_hidden("numero_curso","analize");
-
-
       foreach($nomes as $nome):
-
-        echo form_label("$nome", "$nome");
+      echo ('
+      <tr>
+        <td>'.$nome.'</td>
+        <td>');
         echo form_input(array(
           "name" => "$nome",
         ));
-        echo "<br>";
+        echo ('</td>
+      </tr>
+      ');
       endforeach;
-
-      echo form_button(array(
-        "class" => "btn btn-primary",
-        "content" => "Gerar Relatório",
-        "type" => "submit"
-      ));
-
+      echo('</table>');
       echo form_close();
+
+
 
         ?>
 
-      <h1>Lista</h1>
 
-
-      <table class="table">
-
-        <tr>
-          <td>nome do curso</td>
-          <td>valor final</td>
-          <td>data</td>
-        </tr>
-        <?php foreach ($relatorios as $relatorio): ?>
-          <tr>
-            <td><?=$relatorio['nome']?></td>
-            <td><?=$relatorio['result']?></td>
-            <td><?=$relatorio['data']?></td>
-          </tr>
-        <?php endforeach; ?>
-
-      </table>
       </div>
     </body>
   </html>

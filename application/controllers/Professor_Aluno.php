@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  *
  */
@@ -15,7 +16,7 @@ class Professor_Aluno extends CI_Controller
     $cursos = $this->Professor_Aluno_model->busca_todos_curso();
     $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
     $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
-    $this->load->view("Professor_aluno_view.php", $dados);
+    $this->load->view("Saida.php", $dados);
   }
 
   public function cadastrar()
@@ -25,6 +26,7 @@ class Professor_Aluno extends CI_Controller
     $this->load->helper('url');
 
     $cursos = $this->Professor_Aluno_model->busca_todos_curso();
+    $cursos = array_reverse($cursos);
     foreach ($cursos as $cursov) {
 
     $nome_curso = $cursov["nome"];
@@ -56,16 +58,62 @@ class Professor_Aluno extends CI_Controller
     if ($alunos >0) {
     $relatorio = array('nome' => $nome_curso,'data' => $data, 'result' => $rel );
     $this->Professor_Aluno_model->insert_relatorio($relatorio);
-      $alunos = 0;
     }
-
-
 }
+
+redirect('/', 'refresh');
+
+
+
+  }
+  public function GerarRelatorio()
+  {
+    $this->load->DATABASE();
+    $this->load->model("Professor_Aluno_model");
+    $this->load->helper('url');
 
     $cursos = $this->Professor_Aluno_model->busca_todos_curso();
     $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
     $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
 
+
+    $this->load->view("Saida.php", $dados);
+  }
+  public function VerRelatorio()
+  {
+    $this->load->DATABASE();
+    $this->load->model("Professor_Aluno_model");
+    $this->load->helper('url');
+
+    $cursos = $this->Professor_Aluno_model->busca_todos_curso();
+    $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
+    $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
+
+
     $this->load->view("Professor_aluno_view.php", $dados);
+  }
+
+  public function GerarPDF()
+  {
+    $this->load->DATABASE();
+    $this->load->model("Professor_Aluno_model");
+    $this->load->helper('url');
+
+    $cursos = $this->Professor_Aluno_model->busca_todos_curso();
+    $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
+    $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
+
+    include('mpdf60/mpdf.php');
+    $html =   $this->load->view("Saida.php", $dados, true);
+
+
+    $mpdf=new mPDF();
+    $mpdf->SetDisplayMode('fullpage');
+    $css = file_get_contents(base_url('css/bootstrap.css'));
+    $mpdf->WriteHTML($css,1);
+    $mpdf->WriteHTML($html,2);
+    $mpdf->Output();
+
+
   }
 }
