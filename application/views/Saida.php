@@ -2,10 +2,21 @@
 <html>
   <head>
     <link rel="stylesheet" href="<?= base_url('css/bootstrap.css')?>">
+    <link rel="stylesheet" href="<?= base_url('css/saida.css')?>">
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
+    <div id="Page">
+
+
+      <div id="header">
+        <img src="<?= base_url('img/Marca_IFSP.jpg')?>"/>
+      </div>
+
+
+    <div id="container">
+      <br></br>
     <h1>Lista dos Relatórios</h1>
 
     <table class="table">
@@ -43,6 +54,7 @@
       <?php endforeach; ?>
 
     </table>
-
+  </div>
+  </div>
   </body>
 </html>
