@@ -1,19 +1,3 @@
-
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <link rel="stylesheet" href="<?= base_url('css/bootstrap.css')?>">
-      <meta charset="utf-8">
-      <title></title>
-    </head>
-    <body>
-
-    </body>
-  </html>
-
-
-
-
   <!DOCTYPE html>
   <html>
   <head>
@@ -88,7 +72,7 @@ foreach ($cursos as $curso) {
   </tr>
   <tr>
     <td><b>Nome do Curso</b></td>
-    <td><b>Numero de Alunos</b></td>
+    <td><b>Numero de Alunos Equivalentes</b></td>
   </tr>
 <?php
 
@@ -99,6 +83,7 @@ echo ('
   <td>');
   echo form_input(array(
     "name" => "$nome",
+
   ));
   echo ('</td>
 </tr>

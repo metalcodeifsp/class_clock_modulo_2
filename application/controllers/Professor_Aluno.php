@@ -16,7 +16,7 @@ class Professor_Aluno extends CI_Controller
     $cursos = $this->Professor_Aluno_model->busca_todos_curso();
     $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
     $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
-    $this->load->view("Saida.php", $dados);
+    $this->load->view("Professor_aluno_home_view.php", $dados);
   }
 
   public function cadastrar()
@@ -50,6 +50,7 @@ class Professor_Aluno extends CI_Controller
     }
     $nome_curso = str_replace(" ", "_", $cursov["nome"]);
     $alunos  = $this->input->post($nome_curso);
+    date_default_timezone_set('America/Sao_Paulo');
     $data    = date("Y/m/d");
     $rel = ($alunos * $fenc)/$n_prof_total;
 
@@ -77,7 +78,7 @@ redirect('/', 'refresh');
     $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
 
 
-    $this->load->view("Saida.php", $dados);
+    $this->load->view("Professor_aluno_home_view.php", $dados);
   }
   public function VerRelatorio()
   {
@@ -90,7 +91,7 @@ redirect('/', 'refresh');
     $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
 
 
-    $this->load->view("Professor_aluno_view.php", $dados);
+    $this->load->view("Professor_aluno_cadastro_view.php", $dados);
   }
 
   public function GerarPDF()
