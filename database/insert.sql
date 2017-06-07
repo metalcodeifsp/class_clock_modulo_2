@@ -1,18 +1,18 @@
 INSERT INTO `curso`
 (`id`, `nome`, `sigla`, `qtdSemestres`, `grau`, `status`)
  VALUES
- ('1', 'Gestão_Financeira', 'GEF', '3', '2', '1'),
- ('2', 'Análise_e_Desenvolvimento_de_Sistemas', 'ADS', '6', '5', '1'),
- ('3', 'Engenharia_Civil', 'ENC', '12', '1', '1'),
+ ('1', 'Gestão Financeira', 'GEF', '3', '2', '1'),
+ ('2', 'Análise e Desenvolvimento de Sistemas', 'ADS', '6', '5', '1'),
+ ('3', 'Engenharia Civil', 'ENC', '12', '1', '1'),
  ('4', 'Física', 'FIS', '8', '3', '1'),
  ('5', 'Matemática', 'MAT', '8', '3', '1'),
- ('6', 'Processos_Gerenciais', 'PRG', '5', '5', '1'),
+ ('6', 'Processos Gerenciais', 'PRG', '5', '5', '1'),
  ('7', 'Administração', 'ADM', '3', '4', '1'),
  ('8', 'Aquicultura', 'AQI', '3', '4', '1'),
  ('9', 'Edificações', 'EDI', '4', '4', '1'),
- ('10', 'Informática_Integrada_ao_Ensino_Médio', 'IEM', '6', '4', '1'),
- ('11', 'Informática_para_internet', 'IPI', '3', '4', '1'),
- ('12', 'Meio_Ambiente', 'MEA', '3', '4', '1');
+ ('10', 'Informática Integrada ao Ensino Médio', 'IEM', '6', '4', '1'),
+ ('11', 'Informática para internet', 'IPI', '3', '4', '1'),
+ ('12', 'Meio Ambiente', 'MEA', '3', '4', '1');
 
 INSERT INTO `disciplina`
 (`id`, `nome`, `sigla`, `qtdProf`, `status`)

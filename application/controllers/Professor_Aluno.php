@@ -48,7 +48,7 @@ class Professor_Aluno extends CI_Controller
     }else {
       $fenc = 20/18;
     }
-
+    $nome_curso = str_replace(" ", "_", $cursov["nome"]);
     $alunos  = $this->input->post($nome_curso);
     $data    = date("Y/m/d");
     $rel = ($alunos * $fenc)/$n_prof_total;
@@ -104,12 +104,20 @@ redirect('/', 'refresh');
     $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
 
     include('mpdf60/mpdf.php');
-    $html =   $this->load->view("Saida.php", $dados, true);
+    $html =   $this->load->view("PDF.php", $dados, true);
 
 
     $mpdf=new mPDF();
     $mpdf->SetDisplayMode('fullpage');
-    $css = file_get_contents(base_url('css/bootstrap.css'));
+    $css = ('
+    table, td, th {
+    border: 1px solid black;
+    }
+
+      table {
+    border-collapse: collapse;
+    width: 100%;
+  }');
     $mpdf->WriteHTML($css,1);
     $mpdf->WriteHTML($html,2);
     $mpdf->Output();
