@@ -60,6 +60,8 @@ class Professor_Aluno extends CI_Controller
     $relatorio = array('nome' => $nome_curso,'data' => $data, 'result' => $rel );
     $this->Professor_Aluno_model->insert_relatorio($relatorio);
     }
+  
+
 }
 
 redirect('/', 'refresh');

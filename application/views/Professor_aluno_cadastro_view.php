@@ -83,13 +83,21 @@ echo ('
   <td>');
   echo form_input(array(
     "name" => "$nome",
-
+    "type" => "number"
   ));
   echo ('</td>
 </tr>
 ');
 endforeach;
 echo('</table>');
+/*
+foreach ($nomes as $nome) {
+$test = $this->input->post($nome);
+if (is_numeric($test)) {
+echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+}
+}
+*/
 echo form_close();
 
 
