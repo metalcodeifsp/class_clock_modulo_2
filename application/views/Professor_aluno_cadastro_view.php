@@ -83,7 +83,9 @@ echo ('
   <td>');
   echo form_input(array(
     "name" => "$nome",
-    "type" => "number"
+    "type" => "number",
+    "max" => "9999",
+    "min" => "1"
   ));
   echo ('</td>
 </tr>
