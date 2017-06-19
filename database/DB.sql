@@ -115,3 +115,10 @@ create TABLE if not EXISTS Relatorio(
   result        INT             NOT NULL,
   PRIMARY KEY(id)
 );
+
+create TABLE if not EXISTS Usuario(
+  id            INT             NOT NULL      AUTO_INCREMENT,
+  nome          VARCHAR(255)    NOT NULL,
+  senha          VARCHAR(255)    NOT NULL,
+  PRIMARY KEY(id)
+);

@@ -12,11 +12,41 @@ class Professor_Aluno extends CI_Controller
     $this->load->DATABASE();
     $this->load->model("Professor_Aluno_model");
     $this->load->helper('url');
+    $this->load->helper('form');
+
+    $this->load->view("login.php");
+  }
+
+
+  public function VerCadastro(){
+    $this->load->helper('url');
+    $this->load->view("Cadastro");
+  }
+
+  public function LoginEntrar(){
+    $this->load->DATABASE();
+    $this->load->model("Professor_Aluno_model");
+    $this->load->helper('url');
+    $this->load->helper('form');
 
     $cursos = $this->Professor_Aluno_model->busca_todos_curso();
     $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
     $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
     $this->load->view("Professor_aluno_home_view.php", $dados);
+  }
+
+  public function cadastroUsuario()
+  {
+    $usuario = array(
+      "nome" => $this->input->post("nome"),
+      "senha" => $this->input->post("senha")
+    );
+    $this->load->DATABASE();
+    $this->load->helper('url');
+    $this->load->model("cadastroUsuario_model");
+    $this->cadastroUsuario_model->insert_usuario($usuario);
+    $this->load->view("login");
+
   }
 
   public function cadastrar()
@@ -60,15 +90,20 @@ class Professor_Aluno extends CI_Controller
     $relatorio = array('nome' => $nome_curso,'data' => $data, 'result' => $rel );
     $this->Professor_Aluno_model->insert_relatorio($relatorio);
     }
-  
+
 
 }
 
 redirect('/', 'refresh');
 
-
-
   }
+
+Public function AutenticarLogin(){
+$senha = $this->input->post("senha");
+
+}
+
+
   public function GerarRelatorio()
   {
     $this->load->DATABASE();

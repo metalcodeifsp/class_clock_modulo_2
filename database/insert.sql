@@ -47,3 +47,8 @@ INSERT INTO `competencia`
 VALUES
 ('1', '1', '0', '1'),
 ('2', '2', '0', '1');
+
+INSERT INTO `Usuario`
+(`id`, `nome`, `senha`)
+VALUES
+('1', 'test', 'test');
