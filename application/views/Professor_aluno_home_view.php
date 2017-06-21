@@ -56,7 +56,7 @@
     echo form_close(); ?></td>
     <td>
       <?php
-        echo form_open("Professor_Aluno\index");
+        echo form_open("Professor_Aluno\logout");
         echo form_button(array(
           "class" => "btn btn-primary",
           "content" => "Log-off",

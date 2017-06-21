@@ -15,10 +15,11 @@ class cadastroUsuario_model extends CI_Model{
   }
 
 
-  public function busca_por_senha($senha)
+  public function busca_por_nome_senha($nome,$senha)
   {
     $this->db->select ("*");
     $this->db->from("Usuario");
+    $this->db->where("nome = ",$nome);
     $this->db->where("senha = ",$senha);
     $usuario = $this->db->get()->result_array();
     return $usuario;

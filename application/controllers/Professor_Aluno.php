@@ -10,9 +10,7 @@ class Professor_Aluno extends CI_Controller
   public function index()
   {
     $this->load->DATABASE();
-    $this->load->model("Professor_Aluno_model");
     $this->load->helper('url');
-    $this->load->helper('form');
 
     $this->load->view("login.php");
   }
@@ -26,14 +24,33 @@ class Professor_Aluno extends CI_Controller
   public function LoginEntrar(){
     $this->load->DATABASE();
     $this->load->model("Professor_Aluno_model");
+    $this->load->model("cadastroUsuario_model");
     $this->load->helper('url');
     $this->load->helper('form');
 
+    $nome = $this->input->post("nome");
+    $senha = $this->input->post("senha");
+    $usuario = $this->cadastroUsuario_model->busca_por_nome_senha($nome, $senha);
+
+    if($usuario){
+      $this->session->set_userdata("usuario_logado" , $usuario);
     $cursos = $this->Professor_Aluno_model->busca_todos_curso();
     $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
     $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
     $this->load->view("Professor_aluno_home_view.php", $dados);
+  }else{
+    $this->load->view("login.php");
+        }
+}
+
+  public function logout(){
+    $this->session->unset_userdata("usuario_logado");
+    $this->load->DATABASE();
+    $this->load->helper('url');
+    $this->load->view("login.php");
+
   }
+
 
   public function cadastroUsuario()
   {
