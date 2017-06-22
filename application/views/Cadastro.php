@@ -59,17 +59,31 @@
   ));
   ?>
  </td>
- <td>
- <?php
-  echo form_label("Senha", "senha");
-  echo form_password(array(
-    "name" => "senha",
-    "id" => "senha",
-    "class" => "form-control",
-    "maxlength" => "255"
-  ));
- ?>
-</td>
+<td></td>
+</tr>
+<tr>
+  <td>
+  <?php
+   echo form_label("Senha", "senha");
+   echo form_password(array(
+     "name" => "senha",
+     "id" => "senha",
+     "class" => "form-control",
+     "maxlength" => "255"
+   ));
+  ?>
+ </td>
+ <td></td>
+</tr>
+<tr>
+  <td>
+    <label class="radio-inline">
+      <input type="radio" name="tipo" value="0" checked>Usuário Normal
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="tipo" value="1">Usuário Administrador
+    </label>
+  </td>
 </tr>
 <tr>
 

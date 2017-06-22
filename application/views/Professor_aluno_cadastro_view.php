@@ -92,19 +92,9 @@ echo ('
 ');
 endforeach;
 echo('</table>');
-/*
-foreach ($nomes as $nome) {
-$test = $this->input->post($nome);
-if (is_numeric($test)) {
-echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-}
-}
-*/
 echo form_close();
-
-
-
   ?>
+  
 </div>
   <div class="sidebar"></div>
   <div id="footer"><h1></h1></div>

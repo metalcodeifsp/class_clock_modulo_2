@@ -45,62 +45,51 @@
 <h1>Login</h1>
 
 <table class="table">
-<tr>
-  <td>
-  <?php
-  echo form_open("Professor_Aluno\LoginEntrar");
 
-  echo form_label("Nome", "nome");
-  echo form_input(array(
-    "name" => "nome",
-    "id" => "nome",
-    "class" => "form-control",
-    "maxlength" => "255"
-  ));
-  ?>
- </td>
- <td>
- <?php
-  echo form_label("Senha", "senha");
-  echo form_password(array(
-    "name" => "senha",
-    "id" => "senha",
-    "class" => "form-control",
-    "maxlength" => "255"
-  ));
- ?>
-</td>
-</tr>
-<tr>
+  <tr>
+    <td>
+    <?php
+    echo form_open("Professor_Aluno\LoginEntrar");
 
-
-<td>
-  <?php
-  echo form_button(array(
-    "class" => "btn btn-primary",
-    "content" => "Log-in",
-    "type" => "submit"
-
-  ));
-
-  echo form_close();
-   ?>
-</td>
-
-   <td>
-<?php
-
-  echo form_open("Professor_Aluno\VerCadastro");
-  echo form_button(array(
-    "class" => "btn btn-primary",
-    "content" => "Cadastrar",
-    "type" => "submit"
-
-  ));
-  echo form_close();
-   ?>
+    echo form_label("Nome", "nome");
+    echo form_input(array(
+      "name" => "nome",
+      "id" => "nome",
+      "class" => "form-control",
+      "maxlength" => "255"
+    ));
+    ?>
    </td>
-</tr>
+  </tr>
+
+  <tr>
+    <td>
+    <?php
+     echo form_label("Senha", "senha");
+     echo form_password(array(
+       "name" => "senha",
+       "id" => "senha",
+       "class" => "form-control",
+       "maxlength" => "255"
+     ));
+    ?>
+   </td>
+  </tr>
+  <tr>
+    <td>
+      <?php
+      echo form_button(array(
+        "class" => "btn btn-primary",
+        "content" => "Log-in",
+        "type" => "submit"
+
+      ));
+
+      echo form_close();
+       ?>
+    </td>
+  </tr>
+
 </table>
 </div>
 <div class="sidebar"></div>

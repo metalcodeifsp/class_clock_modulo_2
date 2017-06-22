@@ -49,6 +49,6 @@ VALUES
 ('2', '2', '0', '1');
 
 INSERT INTO `Usuario`
-(`id`, `nome`, `senha`)
+(`id`, `nome`, `senha`, `tipo`)
 VALUES
-('1', 'test', 'test');
+('1', 'test', 'test', '1');

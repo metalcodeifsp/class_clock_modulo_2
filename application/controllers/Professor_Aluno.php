@@ -9,12 +9,26 @@ class Professor_Aluno extends CI_Controller
 
   public function index()
   {
-    $this->load->DATABASE();
-    $this->load->helper('url');
+    if($this->session->userdata('usuario_logado')){
+      $this->load->DATABASE();
+      $this->load->model("Professor_Aluno_model");
+      $this->load->helper('url');
 
-    $this->load->view("login.php");
+      $cursos = $this->Professor_Aluno_model->busca_todos_curso();
+      $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
+      $user_data = $this->session->userdata('usuario_logado');
+      $dados = array('cursos' => $cursos, 'relatorios' => $relatorios, 'dadosUsuario' => $user_data );
+      $this->load->view("Professor_aluno_home_view.php", $dados);
+
+}else{
+
+
+  $this->load->DATABASE();
+  $this->load->helper('url');
+
+  $this->load->view("login.php");
   }
-
+}
 
   public function VerCadastro(){
     $this->load->helper('url');
@@ -34,10 +48,12 @@ class Professor_Aluno extends CI_Controller
 
     if($usuario){
       $this->session->set_userdata("usuario_logado" , $usuario);
-    $cursos = $this->Professor_Aluno_model->busca_todos_curso();
-    $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
-    $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
-    $this->load->view("Professor_aluno_home_view.php", $dados);
+
+            $cursos = $this->Professor_Aluno_model->busca_todos_curso();
+            $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
+            $user_data = $this->session->userdata('usuario_logado');
+            $dados = array('cursos' => $cursos, 'relatorios' => $relatorios, 'dadosUsuario' => $user_data );
+            $this->load->view("Professor_aluno_home_view.php", $dados);
   }else{
     $this->load->view("login.php");
         }
@@ -55,14 +71,21 @@ class Professor_Aluno extends CI_Controller
   public function cadastroUsuario()
   {
     $usuario = array(
-      "nome" => $this->input->post("nome"),
-      "senha" => $this->input->post("senha")
+      "nome"  => $this->input->post("nome"),
+      "senha" => $this->input->post("senha"),
+      "tipo"  => $this->input->post("tipo")
     );
     $this->load->DATABASE();
     $this->load->helper('url');
     $this->load->model("cadastroUsuario_model");
+    $this->load->model("Professor_Aluno_model");
     $this->cadastroUsuario_model->insert_usuario($usuario);
-    $this->load->view("login");
+
+    $cursos = $this->Professor_Aluno_model->busca_todos_curso();
+    $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
+    $user_data = $this->session->userdata('usuario_logado');
+    $dados = array('cursos' => $cursos, 'relatorios' => $relatorios, 'dadosUsuario' => $user_data );
+    $this->load->view("Professor_aluno_home_view.php", $dados);
 
   }
 
@@ -129,9 +152,8 @@ $senha = $this->input->post("senha");
 
     $cursos = $this->Professor_Aluno_model->busca_todos_curso();
     $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
-    $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
-
-
+    $user_data = $this->session->userdata('usuario_logado');
+    $dados = array('cursos' => $cursos, 'relatorios' => $relatorios, 'dadosUsuario' => $user_data );
     $this->load->view("Professor_aluno_home_view.php", $dados);
   }
   public function VerRelatorio()
@@ -142,10 +164,9 @@ $senha = $this->input->post("senha");
 
     $cursos = $this->Professor_Aluno_model->busca_todos_curso();
     $relatorios =  $this->Professor_Aluno_model->busca_todos_relatorios();
-    $dados = array('cursos' => $cursos, 'relatorios' => $relatorios );
-
-
-    $this->load->view("Professor_aluno_cadastro_view.php", $dados);
+    $user_data = $this->session->userdata('usuario_logado');
+    $dados = array('cursos' => $cursos, 'relatorios' => $relatorios, 'dadosUsuario' => $user_data );
+    $this->load->view("Professor_aluno_home_view.php", $dados);
   }
 
   public function GerarPDF()

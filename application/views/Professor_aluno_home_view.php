@@ -54,18 +54,9 @@
     ));
 
     echo form_close(); ?></td>
-    <td>
-      <?php
-        echo form_open("Professor_Aluno\logout");
-        echo form_button(array(
-          "class" => "btn btn-primary",
-          "content" => "Log-off",
-          "type" => "submit"
 
-        ));
-        echo form_close();
-         ?>
-    </td>
+    <td></td>
+
     <td><?php echo form_open("Professor_Aluno/VerRelatorio");
     echo form_button(array(
       "class" => "btn btn-primary",
@@ -90,7 +81,35 @@
       <td><?=$relatorio['data']?></td>
     </tr>
   <?php endforeach; ?>
+  <tr>
+    <td><?php
+      echo form_open("Professor_Aluno\logout");
+      echo form_button(array(
+        "class" => "btn btn-primary",
+        "content" => "Log-off",
+        "type" => "submit"
 
+      ));
+      echo form_close();
+       ?></td>
+
+    <td></td>
+
+    <td>
+ <?php
+ if($dadosUsuario[0]["tipo"] == 1){
+   echo form_open("Professor_Aluno\VerCadastro");
+   echo form_button(array(
+     "class" => "btn btn-primary",
+     "content" => "Cadastrar Usuario",
+     "type" => "submit"
+
+   ));
+   echo form_close();
+   }
+    ?>
+    </td>
+  </tr>
 </table>
 </div>
 <div class="sidebar"></div>
